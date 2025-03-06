@@ -162,7 +162,7 @@ class _ProgressMenuPageState extends State<ProgressMenuPage> {
                               ),
                               childrenPadding: EdgeInsets.zero,
                               children: [
-                                Container(
+                                SizedBox(
                                   height: 130,
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,

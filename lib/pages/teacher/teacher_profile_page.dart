@@ -33,6 +33,39 @@ class _ProfileTeacherPageState extends State<ProfileTeacherPage> {
     }
   }
 
+      void _showInvitationDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: const SizedBox(
+            width: 400, 
+            height: 100,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(height: 10,),
+                                      Center(
+                                        child: Text('Разработано Косякиным Д.', style: TextStyle(
+                                                        color: Color.fromRGBO(53, 73, 142, 1),
+                                                        fontSize: 16,
+                                                        fontWeight: FontWeight.w600,
+                                        ),
+                                                                            ),
+                                      )
+                  ],
+                ),
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,9 +80,9 @@ class _ProfileTeacherPageState extends State<ProfileTeacherPage> {
         actions: [
           IconButton(
             icon: Image.asset('assets/bellIcon.png', width: 24, height: 24),
-            onPressed: () {
-              
-            },
+            onPressed: 
+              _showInvitationDialog
+            ,
           ),
         ],
         backgroundColor: Colors.white,

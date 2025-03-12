@@ -16,7 +16,8 @@ class _ProfilePageState extends State<ProfilePage> {
   int _selectedIndex = 2;
 
   void _onItemTapped(int index) {
-    if (index == _selectedIndex) return; // Не делаем ничего, если нажата текущая иконка
+    if (index == _selectedIndex)
+      return; // Не делаем ничего, если нажата текущая иконка
 
     setState(() {
       _selectedIndex = index;
@@ -33,6 +34,122 @@ class _ProfilePageState extends State<ProfilePage> {
     }
   }
 
+  void _showInvitationDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: const SizedBox(
+            width: 400,
+            height: 150,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Разрабочик - ',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromRGBO(53, 73, 142, 1),
+                        fontSize: 16,
+                      ),
+                    ),
+                    Text(
+                      'Косякин Д. А.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color.fromRGBO(53, 73, 142, 1),
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Бета версия приложения - ',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromRGBO(53, 73, 142, 1),
+                        fontSize: 16,
+                      ),
+                    ),
+                    Text(
+                      '0.14.15',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color.fromRGBO(53, 73, 142, 1),
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Телеграм - ',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromRGBO(53, 73, 142, 1),
+                        fontSize: 16,
+                      ),
+                    ),
+                    Text(
+                      '@kosaykin123',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color.fromRGBO(53, 73, 142, 1),
+                        fontSize: 16,
+                      ),
+                    ),
+                    
+                  ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Email - ',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromRGBO(53, 73, 142, 1),
+                        fontSize: 16,
+                      ),
+                    ),
+                    Text(
+                      'kosaykin123@gmail.com',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color.fromRGBO(53, 73, 142, 1),
+                        fontSize: 16,
+                      ),
+                    ),
+                    
+                  ],
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,15 +158,13 @@ class _ProfilePageState extends State<ProfilePage> {
         title: Padding(
           padding: const EdgeInsets.only(left: 60),
           child: Center(
-            child: Image.asset('assets/logo.png', height: 40), 
+            child: Image.asset('assets/logo.png', height: 40),
           ),
         ),
         actions: [
           IconButton(
             icon: Image.asset('assets/bellIcon.png', width: 24, height: 24),
-            onPressed: () {
-              
-            },
+            onPressed: _showInvitationDialog,
           ),
         ],
         backgroundColor: Colors.white,
@@ -164,9 +279,12 @@ class _ProfilePageState extends State<ProfilePage> {
         children: [
           BottomNavigationBar(
             items: [
-              _buildBottomNavigationBarItem(0, 'assets/home.png', 'assets/home_selected.png'),
-              _buildBottomNavigationBarItem(1, 'assets/course.png', 'assets/course_selected.png'),
-              _buildBottomNavigationBarItem(2, 'assets/profile.png', 'assets/profile_selected.png'),
+              _buildBottomNavigationBarItem(
+                  0, 'assets/home.png', 'assets/home_selected.png'),
+              _buildBottomNavigationBarItem(
+                  1, 'assets/course.png', 'assets/course_selected.png'),
+              _buildBottomNavigationBarItem(
+                  2, 'assets/profile.png', 'assets/profile_selected.png'),
             ],
             currentIndex: _selectedIndex,
             selectedItemColor: Colors.white,
@@ -182,7 +300,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 width: 80,
                 height: 70,
                 decoration: BoxDecoration(
-                  color: _selectedIndex == i ? Colors.white : Colors.transparent,
+                  color:
+                      _selectedIndex == i ? Colors.white : Colors.transparent,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: SizedBox(
@@ -199,7 +318,10 @@ class _ProfilePageState extends State<ProfilePage> {
                               : '${i == 0 ? 'assets/home.png' : i == 1 ? 'assets/course.png' : 'assets/profile.png'}',
                           width: 30,
                           height: 30,
-                          color: _selectedIndex == i ? null : Colors.transparent, // Скрываем неактивные иконки
+                          color: _selectedIndex == i
+                              ? null
+                              : Colors
+                                  .transparent, // Скрываем неактивные иконки
                         ),
                       ),
                     ),
@@ -212,7 +334,8 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  BottomNavigationBarItem _buildBottomNavigationBarItem(int index, String defaultIcon, String selectedIcon) {
+  BottomNavigationBarItem _buildBottomNavigationBarItem(
+      int index, String defaultIcon, String selectedIcon) {
     return BottomNavigationBarItem(
       icon: Image.asset(
         _selectedIndex == index ? selectedIcon : defaultIcon,

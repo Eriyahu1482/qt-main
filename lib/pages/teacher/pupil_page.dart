@@ -16,7 +16,8 @@ class _PupilPageState extends State<PupilPage> {
   int _selectedIndex = 1; // Индекс выбранной страницы
 
   void _onItemTapped(int index) {
-    if (index == _selectedIndex) return; // Не делаем ничего, если нажата текущая иконка
+    if (index == _selectedIndex)
+      return; // Не делаем ничего, если нажата текущая иконка
 
     setState(() {
       _selectedIndex = index;
@@ -25,10 +26,12 @@ class _PupilPageState extends State<PupilPage> {
     // Навигация к соответствующим страницам
     switch (index) {
       case 0:
-        Navigator.pushReplacementNamed(context, DescriptionTeacherPage.routeName);
+        Navigator.pushReplacementNamed(
+            context, DescriptionTeacherPage.routeName);
         break;
       case 1:
-        Navigator.pushReplacementNamed(context, PupilPage.routeName); // Оставляем на этой странице
+        Navigator.pushReplacementNamed(
+            context, PupilPage.routeName); // Оставляем на этой странице
         break;
       case 2:
         Navigator.pushReplacementNamed(context, ProfileTeacherPage.routeName);
@@ -69,7 +72,14 @@ class _PupilPageState extends State<PupilPage> {
           children: [
             const Padding(
               padding: EdgeInsets.all(10),
-              child: Center(child: Text('Выберите ученика, которого хотите обучать', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color.fromRGBO(69, 86, 186, 1),)),),
+              child: Center(
+                child: Text('Выберите ученика, которого хотите обучать',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromRGBO(69, 86, 186, 1),
+                    )),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 10, left: 10),
@@ -95,9 +105,12 @@ class _PupilPageState extends State<PupilPage> {
         children: [
           BottomNavigationBar(
             items: [
-              _buildBottomNavigationBarItem(0, 'assets/home.png', 'assets/home_selected.png'),
-              _buildBottomNavigationBarItem(1, 'assets/course.png', 'assets/course_selected.png'),
-              _buildBottomNavigationBarItem(2, 'assets/profile.png', 'assets/profile_selected.png'),
+              _buildBottomNavigationBarItem(
+                  0, 'assets/home.png', 'assets/home_selected.png'),
+              _buildBottomNavigationBarItem(
+                  1, 'assets/course.png', 'assets/course_selected.png'),
+              _buildBottomNavigationBarItem(
+                  2, 'assets/profile.png', 'assets/profile_selected.png'),
             ],
             currentIndex: _selectedIndex,
             selectedItemColor: Colors.white,
@@ -113,7 +126,8 @@ class _PupilPageState extends State<PupilPage> {
                 width: 80,
                 height: 70,
                 decoration: BoxDecoration(
-                  color: _selectedIndex == i ? Colors.white : Colors.transparent,
+                  color:
+                      _selectedIndex == i ? Colors.white : Colors.transparent,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: SizedBox(
@@ -130,7 +144,10 @@ class _PupilPageState extends State<PupilPage> {
                               : '${i == 0 ? 'assets/home.png' : i == 1 ? 'assets/course.png' : 'assets/profile.png'}',
                           width: 30,
                           height: 30,
-                          color: _selectedIndex == i ? null : Colors.transparent, // Скрываем неактивные иконки
+                          color: _selectedIndex == i
+                              ? null
+                              : Colors
+                                  .transparent, // Скрываем неактивные иконки
                         ),
                       ),
                     ),
@@ -143,9 +160,11 @@ class _PupilPageState extends State<PupilPage> {
     );
   }
 
-  BottomNavigationBarItem _buildBottomNavigationBarItem(int index, String defaultIcon, String selectedIcon) {
+  BottomNavigationBarItem _buildBottomNavigationBarItem(
+      int index, String defaultIcon, String selectedIcon) {
     return BottomNavigationBarItem(
-      icon: _buildImageIcon(_selectedIndex == index ? selectedIcon : defaultIcon),
+      icon:
+          _buildImageIcon(_selectedIndex == index ? selectedIcon : defaultIcon),
       label: '', // Убираем текст
     );
   }
